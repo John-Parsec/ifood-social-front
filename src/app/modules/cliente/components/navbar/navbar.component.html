@@ -1,0 +1,31 @@
+<p-menubar
+  [model]="items"
+  [style]="{ 'background-color': 'var(--app-clear-color)', color: 'white' }">
+  <ng-template pTemplate="start"> IFOOD SOCIAL </ng-template>
+  <ng-template pTemplate="item" let-item let-root="root">
+    <a pRipple class="flex align-items-center p-menuitem-link">
+      <span [class]="item.icon"></span>
+      <span class="ml-2">{{ item.label }}</span>
+      <span
+        *ngIf="item.shortcut"
+        class="ml-auto border-1 surface-border border-round surface-100 text-xs p-1"
+        >{{ item.shortcut }}</span
+      >
+      <i
+        *ngIf="item.items"
+        [ngClass]="[
+          'pi',
+          root ? 'pi-angle-down ml-2' : 'pi-angle-right ml-auto'
+        ]"></i>
+    </a>
+  </ng-template>
+  <ng-template pTemplate="end">
+    <div class="flex align-items-center gap-2">
+      <input
+        type="text"
+        pInputText
+        placeholder="Search"
+        class="w-8rem sm:w-auto" />
+    </div>
+  </ng-template>
+</p-menubar>

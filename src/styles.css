@@ -1,3 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
 @import "primeng/resources/themes/lara-light-blue/theme.css";
 @import "primeng/resources/primeng.css";
+
+@import "primeicons/primeicons.css";
+
+
+:root {
+    --app-primary-color: #F86A2E;
+    --app-secondary-color: #9EA0A8;
+    --app-clear-color: #e4e7f0;
+}
