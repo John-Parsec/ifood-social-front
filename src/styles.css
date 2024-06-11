@@ -10,3 +10,28 @@
     --app-secondary-color: #9EA0A8;
     --app-clear-color: #e4e7f0;
 }
+
+*{
+    font-family: "Outfit", sans-serif;
+    font-optical-sizing: auto;
+}
+
+.outfit-title{
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.outfit-hightlight{
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.outfit-subtitle{
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.outfit-faded{
+    color: var(--app-secondary-color)
+}
+

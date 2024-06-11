@@ -1,25 +1,8 @@
-<p-menubar
-  [model]="items"
-  [style]="{ 'background-color': 'var(--app-clear-color)', color: 'white' }">
+<p-toolbar
+  styleClass="px-5 py-2"
+  [style]="{ 'background-color': 'var(--app-primary-color)', color: 'white' }">
   <ng-template pTemplate="start"> IFOOD SOCIAL </ng-template>
-  <ng-template pTemplate="item" let-item let-root="root">
-    <a pRipple class="flex align-items-center p-menuitem-link">
-      <span [class]="item.icon"></span>
-      <span class="ml-2">{{ item.label }}</span>
-      <span
-        *ngIf="item.shortcut"
-        class="ml-auto border-1 surface-border border-round surface-100 text-xs p-1"
-        >{{ item.shortcut }}</span
-      >
-      <i
-        *ngIf="item.items"
-        [ngClass]="[
-          'pi',
-          root ? 'pi-angle-down ml-2' : 'pi-angle-right ml-auto'
-        ]"></i>
-    </a>
-  </ng-template>
-  <ng-template pTemplate="end">
+  <ng-template pTemplate="center">
     <div class="flex align-items-center gap-2">
       <input
         type="text"
@@ -28,4 +11,20 @@
         class="w-8rem sm:w-auto" />
     </div>
   </ng-template>
-</p-menubar>
+  <ng-template pTemplate="end">
+    <div class="flex flex-wrap align-items-center gap-1">
+      <button
+        class="p-link flex justify-content-center text-white align-items-center h-3rem w-6rem border-round hover:bg-white-alpha-10"
+        (click)="toReceits()">
+        <i class="pi pi-receipt text-2xl"></i>
+        <span class="ml-1">Pedidos</span>
+      </button>
+      <button
+        class="p-link inline-flex justify-content-center text-white align-items-center h-3rem w-6rem border-round hover:bg-white-alpha-10"
+        (click)="toProfile()">
+        <i class="pi pi-user text-2xl"></i>
+        <span class="ml-1">Perfil</span>
+      </button>
+    </div>
+  </ng-template>
+</p-toolbar>
