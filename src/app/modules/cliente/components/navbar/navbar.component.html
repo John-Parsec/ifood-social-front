@@ -1,12 +1,15 @@
 <p-toolbar
   styleClass="px-5 py-2"
-  [style]="{ 'background-color': 'var(--app-primary-color)', color: 'white' }">
+  [style]="{ 'background-color': 'var(--app-primary-color)', color: 'white' }"
+  class="fixed-toolbar">
   <ng-template pTemplate="start"> IFOOD SOCIAL </ng-template>
   <ng-template pTemplate="center">
     <div class="flex align-items-center gap-2">
       <input
         type="text"
         pInputText
+        [(ngModel)]="search"
+        (keyup.enter)="onSearch()"
         placeholder="Search"
         class="w-8rem sm:w-auto" />
     </div>
