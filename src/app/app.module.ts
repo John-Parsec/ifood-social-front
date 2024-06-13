@@ -5,9 +5,10 @@ import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 
 import { ClienteModule } from "./modules/cliente/cliente.module";
+import { NotfoundComponent } from './components/notfound/notfound.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, NotfoundComponent],
   imports: [BrowserModule, AppRoutingModule, ClienteModule],
   providers: [],
   bootstrap: [AppComponent],

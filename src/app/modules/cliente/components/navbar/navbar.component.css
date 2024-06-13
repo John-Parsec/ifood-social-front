@@ -6,3 +6,7 @@
     z-index: 1000;
     margin: 8px;
 }
+
+.logo:hover {
+    cursor: pointer;
+}

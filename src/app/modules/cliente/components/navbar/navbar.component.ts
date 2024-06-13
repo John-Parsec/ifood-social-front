@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-navbar",
@@ -7,15 +8,21 @@ import { Component } from "@angular/core";
 })
 export class NavbarComponent {
   search: string = "";
+  constructor(private router: Router) {}
+
   toReceits() {
-    console.log("toReceits");
+    this.router.navigate(["/receits"]);
   }
 
   toProfile() {
-    console.log("toProfile");
+    this.router.navigate(["/profile"]);
+  }
+
+  toHome() {
+    this.router.navigate(["/home"]);
   }
 
   onSearch() {
-    console.log("toSearch /", this.search);
+    this.router.navigate(["/search", this.search]);
   }
 }

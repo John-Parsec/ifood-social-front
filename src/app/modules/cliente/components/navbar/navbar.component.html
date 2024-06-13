@@ -2,7 +2,11 @@
   styleClass="px-5 py-2"
   [style]="{ 'background-color': 'var(--app-primary-color)', color: 'white' }"
   class="fixed-toolbar">
-  <ng-template pTemplate="start"> IFOOD SOCIAL </ng-template>
+  <ng-template pTemplate="start">
+    <div class="flex align-items-center gap-1 logo" (click)="toHome()">
+      IFOOD SOCIAL
+    </div>
+  </ng-template>
   <ng-template pTemplate="center">
     <div class="flex align-items-center gap-2">
       <input
