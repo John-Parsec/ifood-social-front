@@ -1,5 +1,6 @@
 import { Component } from "@angular/core";
 import { Router } from "@angular/router";
+import { Tag } from "primeng/tag";
 
 @Component({
   selector: "app-navbar",
