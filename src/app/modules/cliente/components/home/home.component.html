@@ -1,2 +1,55 @@
-<h1>Tops da semana</h1>
-<app-store-list [stores]="weekTop"></app-store-list>
+<p-carousel
+  *ngFor="let collection of highlightStores"
+  [value]="collection.stores"
+  [numVisible]="4"
+  [numScroll]="3"
+  [circular]="true"
+  [responsiveOptions]="responsiveOptions"
+  autoplayInterval="3000">
+  <ng-template pTemplate="header">
+    <p class="outfit-title">{{ collection.title }}</p>
+  </ng-template>
+  <ng-template let-store pTemplate="item">
+    <div class="border-1 surface-border border-round m-2 p-3">
+      <div class="mb-3">
+        <div class="relative mx-auto">
+          <img
+            src="{{ store.pathImage }}"
+            [alt]="store.name"
+            class="w-full border-round" />
+          <p-tag
+            [value]="'aberto'"
+            [severity]="'success'"
+            class="absolute"
+            [ngStyle]="{ 'left.px': 5, 'top.px': 5 }" />
+        </div>
+      </div>
+      <div class="mb-3 outfit-title">
+        {{ store.name }}
+      </div>
+      <div class="flex justify-content-between align-items-center">
+        <div
+          class="mt-0 font-semibold outfit-highlight flex flex-direction-row gap-3 flex-wrap">
+          <div class="localization">
+            <i class="pi pi-map-marker"></i>
+            5 km
+          </div>
+          <div class="rating">
+            <i class="pi pi-star-fill text-yellow-500"></i>
+            {{ store.rating }}
+          </div>
+        </div>
+        <span>
+          <p-button
+            icon="pi pi-angle-right"
+            iconPos="right"
+            label="Ver loja"
+            styleClass="ml-2"
+            severity="warning"
+            [rounded]="true"
+            (click)="redirectToStore(store.id)" />
+        </span>
+      </div>
+    </div>
+  </ng-template>
+</p-carousel>

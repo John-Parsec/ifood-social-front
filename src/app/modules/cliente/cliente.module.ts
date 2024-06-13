@@ -8,6 +8,9 @@ import { StoreListComponent } from "./components/store-list/store-list.component
 import { InputTextModule } from "primeng/inputtext";
 import { OverlayPanelModule } from "primeng/overlaypanel";
 import { FormsModule } from "@angular/forms";
+import { CarouselModule } from "primeng/carousel";
+import { ButtonModule } from "primeng/button";
+import { Tag, TagModule } from "primeng/tag";
 
 @NgModule({
   declarations: [
@@ -22,6 +25,9 @@ import { FormsModule } from "@angular/forms";
     InputTextModule,
     OverlayPanelModule,
     FormsModule,
+    CarouselModule,
+    ButtonModule,
+    TagModule,
   ],
   exports: [HomeComponent, NavbarComponent, FooterComponent],
 })

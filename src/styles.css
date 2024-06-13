@@ -18,8 +18,8 @@
 }
 
 body{
-    padding-top: 60px;
-    overflow: hidden;
+    padding-top: 80px; /* Navbar height */
+    overflow-x: hidden;
 }
 
 .outfit-title{
