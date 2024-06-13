@@ -1,5 +1,4 @@
 import { Component } from "@angular/core";
-import { MenuItem } from "primeng/api";
 
 @Component({
   selector: "app-navbar",
@@ -7,11 +6,16 @@ import { MenuItem } from "primeng/api";
   styleUrl: "./navbar.component.css",
 })
 export class NavbarComponent {
+  search: string = "";
   toReceits() {
     console.log("toReceits");
   }
 
   toProfile() {
     console.log("toProfile");
+  }
+
+  onSearch() {
+    console.log("toSearch /", this.search);
   }
 }

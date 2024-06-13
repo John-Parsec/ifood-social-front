@@ -6,6 +6,8 @@ import { FooterComponent } from "./components/footer/footer.component";
 import { ToolbarModule } from "primeng/toolbar";
 import { StoreListComponent } from "./components/store-list/store-list.component";
 import { InputTextModule } from "primeng/inputtext";
+import { OverlayPanelModule } from "primeng/overlaypanel";
+import { FormsModule } from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -14,7 +16,13 @@ import { InputTextModule } from "primeng/inputtext";
     FooterComponent,
     StoreListComponent,
   ],
-  imports: [CommonModule, ToolbarModule, InputTextModule],
+  imports: [
+    CommonModule,
+    ToolbarModule,
+    InputTextModule,
+    OverlayPanelModule,
+    FormsModule,
+  ],
   exports: [HomeComponent, NavbarComponent, FooterComponent],
 })
 export class ClienteModule {}
