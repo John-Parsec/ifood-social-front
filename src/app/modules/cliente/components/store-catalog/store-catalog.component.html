@@ -1,4 +1,12 @@
-<p-dataView #dv [value]="products" [rows]="10" [paginator]="true">
+<p-selectButton 
+    [options]="categorias" 
+    [(ngModel)]="idCategoriaSelecionada" 
+    optionLabel="name" 
+    optionValue="id" 
+    (onChange)="onCategoriaChange($event)"
+    />
+
+<p-dataView #dv [value]="productsFiltered" [rows]="10" [paginator]="true">
     <ng-template pTemplate="list" let-products>
         <div class="grid grid-nogutter">
             <div class="col-12 align-items-center" *ngFor="let item of products; let first = first">
@@ -18,7 +26,6 @@
                                     <i class="pi pi-star-fill text-yellow-500"></i>
                                 </div>
                             </div>
-							<!-- add description -->
 						</div>
 						<div class="text text-900 mt-2">{{ item.description }}</div>
                         <div class="flex flex-column md:align-items-end gap-5">

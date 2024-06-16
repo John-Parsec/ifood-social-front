@@ -21,8 +21,8 @@ import { DialogModule } from 'primeng/dialog';
 import { DropdownModule } from 'primeng/dropdown';
 import { ToolbarModule } from 'primeng/toolbar';
 import { MenubarModule } from 'primeng/menubar';
-import { RatingModule } from 'primeng/rating';
 import { DataViewModule } from 'primeng/dataview';
+import { SelectButtonModule } from 'primeng/selectbutton';
 
 @NgModule({
   declarations: [
@@ -47,8 +47,8 @@ import { DataViewModule } from 'primeng/dataview';
     DropdownModule,
     ToolbarModule,
     MenubarModule,
-    RatingModule,
     DataViewModule,
+    SelectButtonModule,
   ],
   exports: [HomeComponent, NavbarComponent, FooterComponent],
   providers: [MessageService],
