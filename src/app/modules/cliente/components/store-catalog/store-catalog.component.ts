@@ -36,11 +36,12 @@ export class StoreCatalogComponent {
       image: '',
       rating: 0,
       category: 'Categoria 2',
-      description: 'Descrição 4'
+      description: 'Bem-vindo ao mundo dos sanduíches Subway, onde a criatividade culinária encontra a conveniência! Nossa categoria de sanduíches oferece uma variedade de opções para todos os gostos, desde clássicos até criações personalizadas. Escolha o seu tipo de pão, proteína, vegetais, queijos e molhos para montar o sanduíche perfeito. Com ingredientes frescos e saborosos, os nossos sanduíches são uma escolha deliciosa e satisfatória para qualquer ocasião.'
     }
   ];
 
   productsFiltered: Product[] = this.products;
+  layout: "list" | "grid" = "grid";
 
   categorias = [
     { id: '0', name: 'Tudo'},
@@ -72,5 +73,18 @@ export class StoreCatalogComponent {
     if (categoria){
       this.filtrarCategoria(categoria.name);
     }
+  }
+
+  get productsByCategory() {
+    const groupedProducts: { [category: string]: Product[] } = {};
+    
+    for (const product of this.productsFiltered) {
+      if (!groupedProducts[product.category]) {
+        groupedProducts[product.category] = [];
+      }
+      groupedProducts[product.category].push(product);
+    }
+
+    return groupedProducts;
   }
 }
