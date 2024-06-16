@@ -1,7 +1,8 @@
 export interface Store {
-  id: number;
+  id: string;
   pathImage: string;
   name: string;
   rating: number;
   description: string;
+  deliveryFee: number;
 }
