@@ -7,9 +7,14 @@ import { AppComponent } from "./app.component";
 import { ClienteModule } from "./modules/cliente/cliente.module";
 import { NotfoundComponent } from './components/notfound/notfound.component';
 
+
 @NgModule({
   declarations: [AppComponent, NotfoundComponent],
-  imports: [BrowserModule, AppRoutingModule, ClienteModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    ClienteModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

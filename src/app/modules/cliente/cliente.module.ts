@@ -3,11 +3,26 @@ import { CommonModule } from "@angular/common";
 import { HomeComponent } from "./components/home/home.component";
 import { NavbarComponent } from "./components/navbar/navbar.component";
 import { FooterComponent } from "./components/footer/footer.component";
-import { ToolbarModule } from "primeng/toolbar";
 import { StoreListComponent } from "./components/store-list/store-list.component";
-import { InputTextModule } from "primeng/inputtext";
 import { OverlayPanelModule } from "primeng/overlaypanel";
 import { FormsModule } from "@angular/forms";
+import { StoreCatalogComponent } from './components/store-catalog/store-catalog.component';
+
+import { MessageService } from 'primeng/api';
+
+import { InputTextModule } from 'primeng/inputtext';
+import { ButtonModule } from 'primeng/button';
+import { MessageModule } from 'primeng/message';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import { CardModule } from 'primeng/card';
+import { ToastModule } from 'primeng/toast';
+import { TableModule } from 'primeng/table';
+import { DialogModule } from 'primeng/dialog';
+import { DropdownModule } from 'primeng/dropdown';
+import { ToolbarModule } from 'primeng/toolbar';
+import { MenubarModule } from 'primeng/menubar';
+import { RatingModule } from 'primeng/rating';
+import { DataViewModule } from 'primeng/dataview';
 
 @NgModule({
   declarations: [
@@ -15,14 +30,27 @@ import { FormsModule } from "@angular/forms";
     NavbarComponent,
     FooterComponent,
     StoreListComponent,
+    StoreCatalogComponent,
   ],
   imports: [
     CommonModule,
-    ToolbarModule,
-    InputTextModule,
     OverlayPanelModule,
     FormsModule,
+    InputTextModule,
+    ButtonModule,
+    MessageModule,
+    ProgressSpinnerModule,
+    CardModule,
+    ToastModule,
+    TableModule,
+    DialogModule,
+    DropdownModule,
+    ToolbarModule,
+    MenubarModule,
+    RatingModule,
+    DataViewModule,
   ],
   exports: [HomeComponent, NavbarComponent, FooterComponent],
+  providers: [MessageService],
 })
 export class ClienteModule {}
