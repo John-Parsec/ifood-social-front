@@ -12,9 +12,9 @@ export class StoreCatalogComponent {
 
   imgPath = '../../../../../assets/imgs/icon-image-not-found-free-vector.jpg';
 
-  id: string;
+  id: number;
   store: Store = {
-    id: '1',
+    id: 1,
     name: 'Loja 1',
     description: 'Descrição da loja 1',
     rating: 4.5,

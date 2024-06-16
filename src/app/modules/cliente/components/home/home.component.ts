@@ -46,6 +46,7 @@ export class HomeComponent implements OnInit {
             description: "Descrição da loja 1",
             pathImage: "assets/imgs/logo_padrao_loja.png",
             rating: 4.5,
+            deliveryFee: 0,
           },
           {
             id: 2,
@@ -53,6 +54,7 @@ export class HomeComponent implements OnInit {
             description: "Descrição da loja 2",
             pathImage: "assets/imgs/logo_padrao_loja.png",
             rating: 3.5,
+            deliveryFee: 0,
           },
           {
             id: 3,
@@ -60,6 +62,7 @@ export class HomeComponent implements OnInit {
             description: "Descrição da loja 3",
             pathImage: "assets/imgs/logo_padrao_loja.png",
             rating: 5,
+            deliveryFee: 0,
           },
         ],
       },
@@ -72,6 +75,7 @@ export class HomeComponent implements OnInit {
             description: "Descrição da loja 4",
             pathImage: "assets/imgs/logo_padrao_loja.png",
             rating: 4,
+            deliveryFee: 0,
           },
           {
             id: 5,
@@ -79,6 +83,7 @@ export class HomeComponent implements OnInit {
             description: "Descrição da loja 5",
             pathImage: "assets/imgs/logo_padrao_loja.png",
             rating: 3,
+            deliveryFee: 0,
           },
           {
             id: 6,
@@ -86,6 +91,7 @@ export class HomeComponent implements OnInit {
             description: "Descrição da loja 6",
             pathImage: "assets/imgs/logo_padrao_loja.png",
             rating: 4.5,
+            deliveryFee: 0,
           },
         ],
       },
@@ -98,6 +104,7 @@ export class HomeComponent implements OnInit {
             description: "Descrição da loja 7",
             pathImage: "assets/imgs/logo_padrao_loja.png",
             rating: 4.5,
+            deliveryFee: 0,
           },
           {
             id: 8,
@@ -105,6 +112,7 @@ export class HomeComponent implements OnInit {
             description: "Descrição da loja 8",
             pathImage: "assets/imgs/logo_padrao_loja.png",
             rating: 3.5,
+            deliveryFee: 0,
           },
           {
             id: 9,
@@ -112,6 +120,7 @@ export class HomeComponent implements OnInit {
             description: "Descrição da loja 9",
             pathImage: "assets/imgs/logo_padrao_loja.png",
             rating: 5,
+            deliveryFee: 0,
           },
         ],
       },
@@ -119,6 +128,6 @@ export class HomeComponent implements OnInit {
   }
 
   redirectToStore(id: number) {
-    this.router.navigate(["/store", id]);
+    this.router.navigate(["/catalogo", id]);
   }
 }
