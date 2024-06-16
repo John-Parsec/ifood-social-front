@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Product } from '../../models/product';
+import { Store } from '../../models/store';
 
 @Component({
   selector: 'app-store-catalog',
@@ -12,6 +13,15 @@ export class StoreCatalogComponent {
   imgPath = '../../../../../assets/imgs/icon-image-not-found-free-vector.jpg';
 
   id: string;
+  store: Store = {
+    id: '1',
+    name: 'Loja 1',
+    description: 'Descrição da loja 1',
+    rating: 4.5,
+    pathImage: this.imgPath,
+    deliveryFee: 0
+  };
+  
   products: Product[] = [
     {
       id: '1',
@@ -56,6 +66,14 @@ export class StoreCatalogComponent {
 
   constructor(private route: ActivatedRoute) {
     this.id = this.route.snapshot.params['id'];
+    this.store = {
+      id: this.id,
+      name: 'Loja 1',
+      description: 'Descrição da loja 1',
+      rating: 4.5,
+      pathImage: this.imgPath,
+      deliveryFee: 0
+    }
   }
 
   filtrarCategoria(categoria: string) {

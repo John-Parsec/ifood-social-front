@@ -23,7 +23,7 @@ import { ToolbarModule } from 'primeng/toolbar';
 import { MenubarModule } from 'primeng/menubar';
 import { DataViewModule } from 'primeng/dataview';
 import { SelectButtonModule } from 'primeng/selectbutton';
-import { SkeletonModule } from 'primeng/skeleton';
+import { AvatarModule } from 'primeng/avatar';
 
 @NgModule({
   declarations: [
@@ -49,6 +49,7 @@ import { SkeletonModule } from 'primeng/skeleton';
     MenubarModule,
     DataViewModule,
     SelectButtonModule,
+    AvatarModule,
   ],
   exports: [HomeComponent, NavbarComponent, FooterComponent],
   providers: [MessageService],

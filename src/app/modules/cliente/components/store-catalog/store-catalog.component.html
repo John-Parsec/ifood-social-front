@@ -1,4 +1,24 @@
+<div>
+    <div class="store">
+        <p-avatar 
+        image="../../../../../assets/imgs/icon-image-not-found-free-vector.jpg"
+        styleClass="mr-2" 
+        size="xlarge" 
+        shape="circle" />
 
+        <span class="text-2xl font-semibold text-900">{{ store.name }}</span>
+
+        <div class="surface-100 p-1" style="border-radius: 30px">
+            <div class="surface-0 flex align-items-center gap-2 justify-content-center py-1 px-2" style="border-radius: 30px;">
+                <span class="text-900 font-medium text-sm">{{ store.rating }}</span>
+                <i class="pi pi-star-fill text-yellow-500"></i>
+            </div>
+        </div>
+        <span class="text-900 font-medium text-sm p-2"> Entrega {{ store.deliveryFee ? 'R$ ' + store.deliveryFee : 'Grátis' }}</span>
+    </div>
+    <div>
+    </div>
+</div>
 
 <p-selectButton 
     [options]="categorias" 

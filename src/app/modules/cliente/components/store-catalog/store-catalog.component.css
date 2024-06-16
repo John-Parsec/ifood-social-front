@@ -3,6 +3,25 @@
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
-    line-clamp: 3; /* número de linhas desejado */
-    -webkit-line-clamp: 3; /* número de linhas desejado */
+    line-clamp: 2; /* número de linhas desejado */
+    -webkit-line-clamp: 2; /* número de linhas desejado */
+}
+
+.store {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.store span.text-2xl {
+    font-size: 1.5rem;
+}
+
+.store span.font-semibold {
+    font-weight: 600;
+}
+
+.store span.text-900 {
+    color: #1a202c;
 }
