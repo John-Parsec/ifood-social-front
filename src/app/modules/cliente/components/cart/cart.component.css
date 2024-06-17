@@ -1,0 +1,13 @@
+.cart-container {
+    position: fixed;
+    top: 50%; /* ou a posição vertical desejada */
+    right: 0; /* ou a posição horizontal desejada */
+    transform: translateY(-50%); /* Centraliza verticalmente */
+    width: 300px; /* Largura do carrinho */
+    height: 100%; /* Altura fixa do carrinho */
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    overflow-y: auto; /* Permite rolagem vertical quando necessário */
+  }

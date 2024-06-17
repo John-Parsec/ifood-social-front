@@ -27,6 +27,7 @@ import { MenubarModule } from 'primeng/menubar';
 import { DataViewModule } from 'primeng/dataview';
 import { SelectButtonModule } from 'primeng/selectbutton';
 import { AvatarModule } from 'primeng/avatar';
+import { CartComponent } from './components/cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { AvatarModule } from 'primeng/avatar';
     FooterComponent,
     // StoreListComponent,
     StoreCatalogComponent,
+    CartComponent,
   ],
   imports: [
     CommonModule,
@@ -57,7 +59,7 @@ import { AvatarModule } from 'primeng/avatar';
     SelectButtonModule,
     AvatarModule,
   ],
-  exports: [HomeComponent, NavbarComponent, FooterComponent],
+  exports: [HomeComponent, NavbarComponent, FooterComponent, StoreCatalogComponent, CartComponent],
   providers: [MessageService],
 })
 export class ClienteModule {}

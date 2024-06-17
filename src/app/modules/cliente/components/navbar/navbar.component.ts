@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, Output } from "@angular/core";
 import { Router } from "@angular/router";
 import { Tag } from "primeng/tag";
 
@@ -9,6 +9,9 @@ import { Tag } from "primeng/tag";
 })
 export class NavbarComponent {
   search: string = "";
+
+  @Output() _showCart: boolean = false;
+
   constructor(private router: Router) {}
 
   toReceits() {
@@ -25,5 +28,9 @@ export class NavbarComponent {
 
   onSearch() {
     this.router.navigate(["/search", this.search]);
+  }
+
+  showCart() {
+    this._showCart = true;
   }
 }
