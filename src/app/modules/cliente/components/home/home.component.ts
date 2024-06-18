@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Store } from "../../models/store";
 import { Router } from "@angular/router";
+import { DatabaseService } from "../../services/database.service";
 interface HighlightStoreCollection {
   title: string;
   stores: Store[];
@@ -15,7 +16,14 @@ export class HomeComponent implements OnInit {
   responsiveOptions: any[] | undefined;
   highlightStores: HighlightStoreCollection[] | undefined;
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private databaseService: DatabaseService
+  ) {
+    this.databaseService.getStores().subscribe((data) => {
+      console.log(data);
+    });
+  }
 
   ngOnInit() {
     this.responsiveOptions = [
