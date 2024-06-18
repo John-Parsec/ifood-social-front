@@ -1,11 +1,11 @@
+import { HomeStoreInterface } from "./../../models/home-store-interface";
 import { Component, OnInit } from "@angular/core";
-import { Store } from "../../models/store";
 import { Router } from "@angular/router";
 import { DatabaseService } from "../../services/database.service";
 import { Observable } from "rxjs";
 interface HighlightStoreCollection {
   title: string;
-  stores: Store[];
+  stores: HomeStoreInterface[];
 }
 
 @Component({
@@ -15,7 +15,7 @@ interface HighlightStoreCollection {
 })
 export class HomeComponent implements OnInit {
   responsiveOptions: any[] | undefined;
-  categoriesDefinition: any[] | undefined;
+  categoriesDefinition: any[] = [];
   highlightStores: HighlightStoreCollection[] = [];
   stores$: Observable<any[]> = new Observable();
 
@@ -64,33 +64,35 @@ export class HomeComponent implements OnInit {
       },
     ];
 
-    if (this.categoriesDefinition) {
-      this.categoriesDefinition.forEach((category) => {
-        this.databaseService.getStores(category.count).subscribe(
-          (stores) => {
-            let storeList: Store[] = [];
-            stores.forEach((store: any) => {
-              storeList.push({
-                id: store.cod_empreedimento,
-                name: store.dcr_nome_fantasia,
-                description: "Loja " + store.dcr_empreendimento,
-                pathImage: category.pathImage,
-                rating: category.rating,
-                deliveryFee: 0,
-              });
+    this.loadStores();
+  }
+
+  loadStores() {
+    this.categoriesDefinition.forEach((category) => {
+      this.databaseService.getStores(category.count).subscribe(
+        (stores) => {
+          let storeList: HomeStoreInterface[] = [];
+          stores.forEach((store: any) => {
+            storeList.push({
+              id: store.cod_empreedimento,
+              name: store.dcr_nome_fantasia,
+              pathImage: category.pathImage,
+              rating: category.rating,
+              distance: 1,
+              oppenned: true,
             });
-            this.highlightStores?.push({
-              title: category.name,
-              stores: storeList,
-            });
-          },
-          (error) => {
-            console.error("Error fetching stores:", error);
-            this.highlightStores = this.highlightStores;
-          }
-        );
-      });
-    }
+          });
+          this.highlightStores?.push({
+            title: category.name,
+            stores: storeList,
+          });
+        },
+        (error) => {
+          console.error("Error fetching stores:", error);
+          this.highlightStores = this.highlightStores;
+        }
+      );
+    });
   }
 
   redirectToStore(id: number) {
