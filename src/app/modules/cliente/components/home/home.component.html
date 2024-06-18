@@ -4,8 +4,7 @@
   [numVisible]="4"
   [numScroll]="3"
   [circular]="true"
-  [responsiveOptions]="responsiveOptions"
-  autoplayInterval="3000">
+  [responsiveOptions]="responsiveOptions">
   <ng-template pTemplate="header">
     <p class="outfit-title">{{ collection.title }}</p>
   </ng-template>
@@ -53,3 +52,6 @@
     </div>
   </ng-template>
 </p-carousel>
+<div>
+  {{ highlightStores }}
+</div>
