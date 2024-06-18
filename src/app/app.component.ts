@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { CartService } from './modules/cliente/services/cart.service';
 
 @Component({
   selector: 'app-root',
@@ -8,8 +9,11 @@ import { Component, Input } from '@angular/core';
 export class AppComponent {
   title = 'IFoodSocial';
 
-  @Input() showCart:boolean = false;
+  showCart: boolean = false;
 
-  constructor() {
-   }
+  constructor(private cartService: CartService) {
+    this.cartService.showCart$.subscribe(showCart => {
+      this.showCart = showCart;
+    });
+  }
 }
