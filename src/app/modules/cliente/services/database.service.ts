@@ -11,7 +11,7 @@ export class DatabaseService {
   constructor(private http: HttpClient) {}
 
   getStores(number?: number): Observable<any> {
-    return this.http.get<any>(this.endpoint + "/empreendimentos/").pipe(
+    return this.http.get<any>(`${this.endpoint}/empreendimentos/`).pipe(
       map((stores) => {
         // se nao for passado numero de lojas, retornar todas
         if (!number) {
@@ -40,8 +40,17 @@ export class DatabaseService {
   }
 
   getStoreById(id: number): Observable<any> {
+    return this.http.get<any>(`${this.endpoint}/empreendimentos/${id}/`).pipe(
+      catchError((error) => {
+        console.error("Error fetching store:", error);
+        return of({});
+      })
+    );
+  }
+
+  getStoreByName(name: string): Observable<any> {
     return this.http
-      .get<any>(this.endpoint + "/empreendimentos/" + id + "/")
+      .get<any>(`${this.endpoint}/empreendimentos/?query_name=${name}`)
       .pipe(
         catchError((error) => {
           console.error("Error fetching store:", error);
@@ -51,13 +60,11 @@ export class DatabaseService {
   }
 
   getAvaliability(id: number): Observable<any> {
-    return this.http
-      .get<any>(this.endpoint + "/disponibilidade/" + id + "/")
-      .pipe(
-        catchError((error) => {
-          console.error("Error fetching avaliability:", error);
-          return of({});
-        })
-      );
+    return this.http.get<any>(`${this.endpoint}/disponibilidade/${id}/`).pipe(
+      catchError((error) => {
+        console.error("Error fetching avaliability:", error);
+        return of({});
+      })
+    );
   }
 }

@@ -28,6 +28,7 @@ import { DataViewModule } from "primeng/dataview";
 import { SelectButtonModule } from "primeng/selectbutton";
 import { AvatarModule } from "primeng/avatar";
 import { HttpClientModule } from "@angular/common/http";
+import { SearchComponent } from './components/search/search.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { HttpClientModule } from "@angular/common/http";
     FooterComponent,
     // StoreListComponent,
     StoreCatalogComponent,
+    SearchComponent,
   ],
   imports: [
     CommonModule,

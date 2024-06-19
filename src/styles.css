@@ -8,6 +8,7 @@
     --app-primary-color: rgb(248, 106, 46);
     --app-secondary-color: #9EA0A8;
     --app-clear-color: #e4e7f0;
+    --app-text-color: #191D31;
     --primary-color-opacity-40: rgba(248, 106, 46, 0.4);
 }
 
@@ -24,20 +25,23 @@ body{
 .outfit-title{
     font-size: 20px;
     font-weight: 600;
+    color: var(--app-text-color) !important;
 }
 
 .outfit-hightlight{
     font-size: 16px;
     font-weight: 500;
+    color: var(--app-text-color) !important;
 }
 
 .outfit-subtitle{
     font-size: 16px;
     font-weight: 600;
+    color: var(--app-text-color) !important;
 }
 
 .outfit-faded{
-    color: var(--app-secondary-color)
+    color: var(--app-secondary-color) !important;
 }
 
 .text-orange{

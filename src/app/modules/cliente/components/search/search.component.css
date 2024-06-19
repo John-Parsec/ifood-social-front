@@ -1,0 +1,4 @@
+:host ::ng-deep .p-selectbutton .p-button.p-highlight {
+    background: var(--app-primary-color);
+    border-color: var(--app-primary-color);
+}
