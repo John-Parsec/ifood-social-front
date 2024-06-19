@@ -1,42 +1,43 @@
-<div class="fixed-toolbar">
-  <p-toolbar
-    styleClass="px-5 py-2 border-none"
-    class="button p-indicator"
-    [style]="{
-      'background-color': 'var(--app-primary-color)',
-      color: 'white'
-    }">
-    <ng-template pTemplate="start">
-      <div class="flex align-items-center gap-1 logo" (click)="toHome()">
-        IFOOD SOCIAL
-      </div>
-    </ng-template>
-    <ng-template pTemplate="center">
-      <div class="flex align-items-center gap-2">
-        <input
-          type="text"
-          pInputText
-          [(ngModel)]="search"
-          (keyup.enter)="onSearch()"
-          placeholder="Search"
-          class="w-8rem sm:w-auto" />
-      </div>
-    </ng-template>
-    <ng-template pTemplate="end">
-      <div class="flex flex-wrap align-items-center gap-1">
-        <button
-          class="p-link flex justify-content-center text-white align-items-center h-3rem w-6rem border-round hover:bg-white-alpha-10"
-          (click)="toReceits()">
-          <i class="pi pi-receipt text-2xl"></i>
-          <span class="ml-1">Pedidos</span>
-        </button>
-        <button
-          class="p-link inline-flex justify-content-center text-white align-items-center h-3rem w-6rem border-round hover:bg-white-alpha-10"
-          (click)="toProfile()">
-          <i class="pi pi-user text-2xl"></i>
-          <span class="ml-1">Perfil</span>
-        </button>
-      </div>
-    </ng-template>
-  </p-toolbar>
-</div>
+<p-toolbar
+  styleClass="px-5 py-2"
+  [style]="{ 'background-color': 'var(--app-primary-color)', color: 'white' }"
+  class="fixed-toolbar">
+  <ng-template pTemplate="start">
+    <div class="flex align-items-center gap-1 logo" (click)="toHome()">
+      IFOOD SOCIAL
+    </div>
+  </ng-template>
+  <ng-template pTemplate="center">
+    <div class="flex align-items-center gap-2">
+      <input
+        type="text"
+        pInputText
+        [(ngModel)]="search"
+        (keyup.enter)="onSearch()"
+        placeholder="Search"
+        class="w-8rem sm:w-auto" />
+    </div>
+  </ng-template>
+  <ng-template pTemplate="end">
+    <div class="flex flex-wrap align-items-center gap-1">
+      <button
+        class="p-link flex justify-content-center text-white align-items-center h-3rem w-6rem border-round hover:bg-white-alpha-10"
+        (click)="toReceits()">
+        <i class="pi pi-receipt text-2xl"></i>
+        <span class="ml-1">Pedidos</span>
+      </button>
+      <button
+        class="p-link inline-flex justify-content-center text-white align-items-center h-3rem w-6rem border-round hover:bg-white-alpha-10"
+        (click)="toggleCart()">
+        <i class="pi pi-shopping-cart text-2xl"></i>
+        <span class="ml-1">Sacola</span>
+      </button>
+      <button
+        class="p-link inline-flex justify-content-center text-white align-items-center h-3rem w-6rem border-round hover:bg-white-alpha-10"
+        (click)="toProfile()">
+        <i class="pi pi-user text-2xl"></i>
+        <span class="ml-1">Perfil</span>
+      </button>
+    </div>
+  </ng-template>
+</p-toolbar>
