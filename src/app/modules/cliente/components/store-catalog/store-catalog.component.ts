@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from '../../models/product';
 import { Store } from '../../models/store';
+import { query } from '@angular/animations';
 
 @Component({
   selector: 'app-store-catalog',
@@ -64,7 +65,7 @@ export class StoreCatalogComponent {
 
   idCategoriaSelecionada = '0';
 
-  constructor(private route: ActivatedRoute) {
+  constructor(private route: ActivatedRoute, private router: Router) {
     this.id = this.route.snapshot.params['id'];
     this.store = {
       id: this.id,
@@ -109,6 +110,6 @@ export class StoreCatalogComponent {
   }
 
   detalharProduto(id: number) {
-    console.log('Detalhar produto', id);
+    this.router.navigate(['produto', id], {relativeTo: this.route});
   }
 }
