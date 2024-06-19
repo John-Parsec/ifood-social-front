@@ -1,10 +1,27 @@
 <p-dialog 
-    header="Header" 
+    header="{{product?.name}}" 
+    [visible]="visible"
     [modal]="true"
     [style]="{ width: '50rem' }" 
-    [breakpoints]="{ '1199px': '75vw', '575px': '90vw' }" 
-    [maximizable]="true">
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit...
-        </p>
+    [breakpoints]="{ '1199px': '75vw', '575px': '90vw' }"
+    [draggable]="false" >
+    
+    <div style="display: flex;">
+        <img [src]="product?.image" [alt]="product?.name" style="max-width: 300px;" />
+        <div style="margin-left: 10px;">
+            <p>{{ product?.description }}</p>
+            
+            <textarea 
+                rows="5"
+                cols="30" 
+                pInputTextarea 
+                placeholder="Alguma observação?"
+                [(ngModel)]="observacoes">
+            </textarea>
+            
+            <p>Preço: {{ product?.price | currency:'BRL' }}</p>
+            
+            <p-button icon="pi pi-shopping-cart" class="flex-auto md:flex-initial white-space-nowrap" label="Add a Sacola" severity="warning"/>
+        </div>
+    </div>
 </p-dialog>

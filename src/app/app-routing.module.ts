@@ -10,11 +10,7 @@ import { ProductDetailsComponent } from "./modules/cliente/components/product-de
 const routes: Routes = [
   { path: "", redirectTo: "home", pathMatch: "full" },
   { path: "home", component: HomeComponent },
-  { path: "catalogo/:catalogId", component: StoreCatalogComponent,
-    children: [
-      { path: "produto/:productId", component: ProductDetailsComponent },
-    ]
-  },
+  { path: "catalogo/:catalogId", component: StoreCatalogComponent },
   { path: "search/:search", component: SearchComponent },
   { path: "cart", component: CartComponent },
   { path: "**", component: NotfoundComponent },

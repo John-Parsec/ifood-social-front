@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from '../../models/product';
 import { Store } from '../../models/store';
@@ -65,6 +65,9 @@ export class StoreCatalogComponent {
 
   idCategoriaSelecionada = '0';
 
+  @Input() displayProductDetails = false;
+  productToShow: Product | undefined;
+
   constructor(private route: ActivatedRoute, private router: Router) {
     this.id = this.route.snapshot.params['id'];
     this.store = {
@@ -109,7 +112,12 @@ export class StoreCatalogComponent {
     return groupedProducts;
   }
 
-  detalharProduto(id: number) {
-    this.router.navigate(['produto', id], {relativeTo: this.route});
+  detalharProduto(produto: Product) {
+    this.productToShow = produto;
+    this.displayProductDetails = true;
+  }
+
+  onHideProductDetails() {
+    this.displayProductDetails = false;
   }
 }
