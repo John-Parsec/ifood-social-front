@@ -40,7 +40,7 @@ export class DatabaseService {
   }
 
   getStoreById(id: number): Observable<any> {
-    return this.http.get<any>(`${this.endpoint}/empreendimentos/${id}/`).pipe(
+    return this.http.get<any>(`${this.endpoint}/empreendimento/${id}/`).pipe(
       catchError((error) => {
         console.error("Error fetching store:", error);
         return of({});
@@ -74,6 +74,17 @@ export class DatabaseService {
       .pipe(
         catchError((error) => {
           console.error("Error fetching products:", error);
+          return of([]);
+        })
+      );
+  }
+
+  getCategoriesByStore(id: number): Observable<any> {
+    return this.http
+      .get<any>(`${this.endpoint}/empreendimento/${id}/categorias/`)
+      .pipe(
+        catchError((error) => {
+          console.error("Error fetching categories:", error);
           return of([]);
         })
       );
