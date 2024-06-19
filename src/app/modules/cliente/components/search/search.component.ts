@@ -10,7 +10,8 @@ import { ActivatedRoute, Router } from "@angular/router";
 export class SearchComponent {
   search: string = "";
   stores: any;
-  products: any;
+  products: any[] = [];
+  allStores: any;
   modos: any[] = [
     { id: 0, name: "Estabelecimentos" },
     { id: 1, name: "Produtos" },
@@ -24,8 +25,27 @@ export class SearchComponent {
     this.search = this.route.snapshot.params["search"];
     this.databaseService.getStoreByName(this.search).subscribe((stores) => {
       this.stores = stores;
-      console.log(this.stores);
     });
+
+    this.databaseService.getStores().subscribe((stores) => {
+      this.allStores = stores;
+    });
+
+    this.databaseService
+      .getProductsByName(this.search)
+      .subscribe((products) => {
+        products.forEach((product: any) => {
+          const empreendimento = this.allStores.find(
+            (store: any) =>
+              store.cod_empreedimento === product.cod_empreedimento
+          );
+          const updatedProduct = {
+            ...product,
+            empreendimento: empreendimento?.dcr_nome_fantasia,
+          };
+          this.products.push(updatedProduct);
+        });
+      });
   }
 
   redirectToStore(id: number) {

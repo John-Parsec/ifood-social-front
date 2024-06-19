@@ -67,4 +67,15 @@ export class DatabaseService {
       })
     );
   }
+
+  getProductsByName(name: string): Observable<any> {
+    return this.http
+      .get<any>(`${this.endpoint}/produtos/?query_name=${name}`)
+      .pipe(
+        catchError((error) => {
+          console.error("Error fetching products:", error);
+          return of([]);
+        })
+      );
+  }
 }
