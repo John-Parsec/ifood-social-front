@@ -107,4 +107,8 @@ export class StoreCatalogComponent {
 
     return groupedProducts;
   }
+
+  detalharProduto(id: number) {
+    console.log('Detalhar produto', id);
+  }
 }

@@ -5,6 +5,7 @@
     text-overflow: ellipsis;
     line-clamp: 2; /* número de linhas desejado */
     -webkit-line-clamp: 2; /* número de linhas desejado */
+    height: 2.5rem;
 }
 
 .store {
@@ -24,4 +25,10 @@
 
 .store span.text-900 {
     color: #1a202c;
+}
+
+.produto:hover {
+    cursor: pointer;
+    background-color: #f7fafc;
+    border-radius: 10px;
 }
