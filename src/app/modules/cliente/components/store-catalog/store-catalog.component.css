@@ -11,8 +11,9 @@
 .store {
     display: flex;
     align-items: center;
-    padding: 10px;
+    padding: 50px 10px;
     margin-bottom: 10px;
+    justify-content: center;
 }
 
 .store span.text-2xl {
@@ -32,3 +33,9 @@
     background-color: #f7fafc;
     border-radius: 10px;
 }
+
+:host ::ng-deep .p-selectbutton .p-button.p-highlight {
+    background: var(--app-primary-color);
+    border-color: var(--app-primary-color);
+}
+
