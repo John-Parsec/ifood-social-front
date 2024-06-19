@@ -1,0 +1,50 @@
+.cart-container {
+  position: fixed;
+  top: 50%; /* ou a posição vertical desejada */
+  margin-top: 4rem;
+  right: 0; /* ou a posição horizontal desejada */
+  transform: translateY(-50%); /* Centraliza verticalmente */
+  /* width: 450px; Largura do carrinho */
+  height: 100%; /* Altura fixa do carrinho */
+  background-color: #fff;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  overflow-y: auto; /* Permite rolagem vertical quando necessário */
+}
+
+.quantity {
+  display: flex;
+  align-items: center;
+}
+
+.quantity button {
+  padding: 5px 10px;
+}
+
+.quantity p {
+  margin: 0 10px;
+}
+
+.hover {
+  cursor: pointer;
+}
+
+.store {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.store span.text-2xl {
+  font-size: 1.5rem;
+}
+
+.store span.font-semibold {
+  font-weight: 600;
+}
+
+.store span.text-900 {
+  color: #1a202c;
+}

@@ -30,6 +30,8 @@ import { AvatarModule } from "primeng/avatar";
 import { HttpClientModule } from "@angular/common/http";
 import { SearchComponent } from './components/search/search.component';
 
+import { CartComponent } from './components/cart/cart.component';
+
 @NgModule({
   declarations: [
     HomeComponent,
@@ -38,6 +40,7 @@ import { SearchComponent } from './components/search/search.component';
     // StoreListComponent,
     StoreCatalogComponent,
     SearchComponent,
+    CartComponent,
   ],
   imports: [
     CommonModule,
@@ -61,7 +64,7 @@ import { SearchComponent } from './components/search/search.component';
     AvatarModule,
     HttpClientModule,
   ],
-  exports: [HomeComponent, NavbarComponent, FooterComponent],
+  exports: [HomeComponent, NavbarComponent, FooterComponent, StoreCatalogComponent, CartComponent],
   providers: [MessageService],
 })
 export class ClienteModule {}
