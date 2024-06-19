@@ -65,7 +65,7 @@
 
         <ng-template let-product pTemplate="grid" let-products>
             <div class="grid grid-nogutter">
-                <div class="col-12 sm:col-6 md:col-6 xl:col-3 p-2" *ngFor="let product of products">
+                <div class="col-12 sm:col-6 md:col-6 xl:col-3 p-2 produto" *ngFor="let product of products" (click)="detalharProduto(product.id)">
                     <div class="p-4 border-1 surface-border surface-card border-round flex flex-column">
                         <div class="surface-50 flex justify-content-center border-round p-3">
                             <div class="relative mx-auto">
@@ -87,9 +87,6 @@
                             <div class="text text-900 mt-2 line-clamp">{{ product.description }}</div>
                             <div class="flex flex-column gap-4 mt-4">
                                 <span class="text-2xl font-semibold">{{ product.price | currency:'BRL' }}</span>
-                                <div class="flex gap-2">
-                                    <p-button icon="pi pi-shopping-cart" class="flex-auto md:flex-initial white-space-nowrap" label="Add ao Carrinho" />
-                                </div>
                             </div>
                         </div>
                     </div>
