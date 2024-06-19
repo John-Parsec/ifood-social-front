@@ -20,6 +20,7 @@ export class NavbarComponent {
   }
 
   toHome() {
+    this.search = "";
     this.router.navigate(["/home"]);
   }
 
