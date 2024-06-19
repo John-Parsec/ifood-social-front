@@ -28,10 +28,10 @@
             </td>
             <td>
                 <div class="quantity">
-                    <p-button [raised]="true" [rounded]="true" size="small" icon="pi pi-minus" disabled="{{ product.quantity == 1 ? true : false }}" (click)="minusQtde(product)"
+                    <p-button [raised]="true" [rounded]="true" [outlined]="true" size="small" icon="pi pi-minus" disabled="{{ product.quantity == 1 ? true : false }}" (click)="minusQtde(product)"
                     severity="warning" />
                     <p>{{ product.quantity }}</p>
-                    <p-button [raised]="true" [rounded]="true" size="small" icon="pi pi-plus" (click)="plusQtde(product)"
+                    <p-button [raised]="true" [rounded]="true" [outlined]="true" size="small" icon="pi pi-plus" (click)="plusQtde(product)"
                     severity="warning" />
                 </div>
             </td>
@@ -47,12 +47,15 @@
     </ng-template>
     <ng-template pTemplate="footer">
         <tr>
-            <td colspan="4" class="text-right">
+            <td colspan="4">
                 <span>{{ store.deliveryFee ? 'Taxa de entrega: R$' + store.deliveryFee : 'Frete Grátis' }}</span>
             </td>
         <tr>
-            <td colspan="4" class="text-right">
+            <td  colspan="2">
                 <h3>Total: {{ precoTotal() | currency: "BRL" }}</h3>
+            </td>
+            <td  colspan="2" class="text-right">
+                <p-button label="Finalizar Pedido" (click)="finalizarPedido()" severity="warning"/>
             </td>
         </tr>
     </ng-template>

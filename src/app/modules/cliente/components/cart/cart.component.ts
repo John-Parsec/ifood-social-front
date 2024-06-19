@@ -81,4 +81,8 @@ export class CartComponent {
   detalharProduto(product: Product) {
     alert(`Detalhes do produto: ${product.name}`);
   }
+
+  finalizarPedido() {
+    alert('Pedido finalizado');
+  }
 }
