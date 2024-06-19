@@ -1,4 +1,18 @@
 <p-table [value]="products" class="cart-container" [tableStyle]="{ 'min-width': '25rem' ,'max-width': '25rem' }">
+    <ng-template pTemplate="header">
+        <tr>
+            <td>
+                <p-avatar 
+                image="../../../../../assets/imgs/icon-image-not-found-free-vector.jpg"
+                styleClass="mr-2" 
+                size="xlarge" 
+                shape="circle" />
+            </td>
+            <td>
+                <span class="text-2xl font-semibold text-900">{{ store.name }}</span>
+            </td>
+        </tr>
+    </ng-template>
     <ng-template let-product pTemplate="body">
         <tr>
             <td class="hover" (click)="detalharProduto(product)">
@@ -14,7 +28,7 @@
             </td>
             <td>
                 <div class="quantity">
-                    <p-button [raised]="true" [rounded]="true" size="small" icon="pi pi-minus" (click)="minusQtde(product)"
+                    <p-button [raised]="true" [rounded]="true" size="small" icon="pi pi-minus" disabled="{{ product.quantity == 1 ? true : false }}" (click)="minusQtde(product)"
                     severity="warning" />
                     <p>{{ product.quantity }}</p>
                     <p-button [raised]="true" [rounded]="true" size="small" icon="pi pi-plus" (click)="plusQtde(product)"
@@ -32,6 +46,10 @@
         </tr>
     </ng-template>
     <ng-template pTemplate="footer">
+        <tr>
+            <td colspan="4" class="text-right">
+                <span>{{ store.deliveryFee ? 'Taxa de entrega: R$' + store.deliveryFee : 'Frete Grátis' }}</span>
+            </td>
         <tr>
             <td colspan="4" class="text-right">
                 <h3>Total: {{ precoTotal() | currency: "BRL" }}</h3>
