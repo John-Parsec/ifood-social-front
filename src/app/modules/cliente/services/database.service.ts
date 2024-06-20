@@ -59,13 +59,15 @@ export class DatabaseService {
       );
   }
 
-  getAvaliability(id: number): Observable<any> {
-    return this.http.get<any>(`${this.endpoint}/disponibilidade/${id}/`).pipe(
-      catchError((error) => {
-        console.error("Error fetching avaliability:", error);
-        return of({});
-      })
-    );
+  getAvaliability(idStore: number): Observable<any> {
+    return this.http
+      .get<any>(`${this.endpoint}/empreendimento/${idStore}/disponibilidades/`)
+      .pipe(
+        catchError((error) => {
+          console.error("Error fetching avaliability:", error);
+          return of({});
+        })
+      );
   }
 
   getProductsByName(name: string): Observable<any> {
