@@ -31,6 +31,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { SearchComponent } from './components/search/search.component';
 
 import { CartComponent } from './components/cart/cart.component';
+import { ProductDetailsComponent } from './components/product-details/product-details.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { CartComponent } from './components/cart/cart.component';
     StoreCatalogComponent,
     SearchComponent,
     CartComponent,
+    ProductDetailsComponent,
   ],
   imports: [
     CommonModule,
@@ -63,6 +65,7 @@ import { CartComponent } from './components/cart/cart.component';
     SelectButtonModule,
     AvatarModule,
     HttpClientModule,
+    DialogModule,
   ],
   exports: [HomeComponent, NavbarComponent, FooterComponent, StoreCatalogComponent, CartComponent],
   providers: [MessageService],
