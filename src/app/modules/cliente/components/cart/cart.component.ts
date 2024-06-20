@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Product } from '../../models/product';
 import { Store } from '../../models/store';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
@@ -52,7 +53,7 @@ export class CartComponent {
     }
   ];
   
-  constructor() { }
+  constructor(private router: Router) { }
 
   minusQtde(product: Product) {
     if (product.quantity && product.quantity > 0) {
@@ -79,7 +80,7 @@ export class CartComponent {
   }
 
   detalharProduto(product: Product) {
-    alert(`Detalhes do produto: ${product.name}`);
+    this.router.navigate(['catalogo/', this.store.id], { queryParams: { product: product.id }} );
   }
 
   finalizarPedido() {

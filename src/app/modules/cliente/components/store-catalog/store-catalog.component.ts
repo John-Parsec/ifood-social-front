@@ -41,6 +41,15 @@ export class StoreCatalogComponent implements OnInit {
     this.id = this.route.snapshot.params["id"];
     console.log(this.id);
 
+    let queryParams = this.route.snapshot.queryParams;
+    
+    if (queryParams["product"]) {
+      this.productToShow = this.products.find(
+        (product) => product.id === queryParams["product"]
+      );
+      this.displayProductDetails = true;
+    }
+
     this.database.getStoreById(this.id).subscribe((store) => {
       this.store.id = store.cod_cod_empreedimento;
       this.store.name = store.dcr_nome_fantasia;
