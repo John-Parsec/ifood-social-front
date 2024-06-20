@@ -8,24 +8,18 @@ import { User } from "../models/user";
 })
 export class DatabaseService {
   endpoint = "http://localhost:8000/api";
-
-  users: User[] = [
-    {
-      id: 1,
-      name: 'João',
-      address: 'Rua 1',
-      complement: 'Casa 1'
-    },
-    {
-      id: 2,
-      name: 'Maria',
-      address: 'Rua 2',
-      complement: 'Casa 2'
-    }
-  ];
-  userAtual: User = this.users[0];
+  userAtual: User = {} as User;
 
   constructor(private http: HttpClient) {}
+
+  getClients(): Observable<any> {
+    return this.http.get<User[]>(`${this.endpoint}/clientes/`).pipe(
+      catchError((error) => {
+        console.error("Error fetching clients:", error);
+        return of([]);
+      })
+    );
+  }
 
   getStores(number?: number): Observable<any> {
     return this.http.get<any>(`${this.endpoint}/empreendimentos/`).pipe(
