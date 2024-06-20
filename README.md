@@ -5,6 +5,7 @@ Repositório para a criação do modulo Cliente para o projeto da disciplina Eng
 Para executar este projeto, você precisará das seguintes dependências:
 
 - Node.js
+- Angular
 - npm (Node Package Manager)
 
 ## Instalação
