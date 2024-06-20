@@ -1,7 +1,8 @@
 import { Component, Output } from "@angular/core";
 import { Router } from "@angular/router";
 import { Tag } from "primeng/tag";
-import { CartService } from "../../services/cart.service";
+import { DatabaseService } from "../../services/database.service";
+import { User } from "../../models/user";
 
 @Component({
   selector: "app-navbar",
@@ -12,7 +13,7 @@ export class NavbarComponent {
   search: string = "";
   showCart: boolean = false;
 
-  constructor(private router: Router, private cartService: CartService) {}
+  constructor(private router: Router, private databaseService: DatabaseService) {}
 
   toReceits() {
     this.router.navigate(["/receits"]);
@@ -33,6 +34,5 @@ export class NavbarComponent {
 
   toggleCart() {
     this.showCart = !this.showCart;
-    this.cartService.toggleCart(this.showCart);
   }
 }

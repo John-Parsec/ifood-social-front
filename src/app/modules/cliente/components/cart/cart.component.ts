@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Product } from '../../models/product';
 import { Store } from '../../models/store';
+import { Router } from '@angular/router';
+import { SacolaService } from '../../services/sacola.service';
 
 @Component({
   selector: 'app-cart',
@@ -52,7 +54,9 @@ export class CartComponent {
     }
   ];
   
-  constructor() { }
+  constructor(private router: Router, private sacolaService: SacolaService) { 
+    this.products = this.sacolaService.produtos;
+  }
 
   minusQtde(product: Product) {
     if (product.quantity && product.quantity > 0) {
@@ -79,7 +83,7 @@ export class CartComponent {
   }
 
   detalharProduto(product: Product) {
-    alert(`Detalhes do produto: ${product.name}`);
+    this.router.navigate(['catalogo/', this.store.id], { queryParams: { product: product.id }} );
   }
 
   finalizarPedido() {

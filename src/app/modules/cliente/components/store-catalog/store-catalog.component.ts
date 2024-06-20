@@ -1,9 +1,8 @@
 import { DatabaseService } from "./../../services/database.service";
-import { ChangeDetectorRef, Component, OnInit } from "@angular/core";
+import { ChangeDetectorRef, Component, Input, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { Product } from "../../models/product";
 import { Store } from "../../models/store";
-import { Observable } from "rxjs";
 
 @Component({
   selector: "app-store-catalog",
@@ -16,21 +15,24 @@ export class StoreCatalogComponent implements OnInit {
 
   id: number;
   store: Store = {
-    id: 1,
-    name: "Loja 1",
-    description: "Descrição da loja 1",
-    rating: 4.5,
-    pathImage: "",
+    id: 0,
+    name: '',
+    description: '',
+    rating: 0,
+    pathImage: '',
     deliveryFee: 0,
   };
 
   products: Product[] = [];
-
   productsFiltered: Product[] = this.products;
-  layout: "list" | "grid" = "grid";
-
+  
   categorias: any[] = [{ id: "0", name: "Tudo" }];
   idCategoriaSelecionada = "0";
+
+  layout: "list" | "grid" = "grid";
+
+  @Input() displayProductDetails = false;
+  productToShow: Product | undefined;
 
   constructor(
     private route: ActivatedRoute,
@@ -38,6 +40,15 @@ export class StoreCatalogComponent implements OnInit {
   ) {
     this.id = this.route.snapshot.params["id"];
     console.log(this.id);
+
+    let queryParams = this.route.snapshot.queryParams;
+    
+    if (queryParams["product"]) {
+      this.productToShow = this.products.find(
+        (product) => product.id === queryParams["product"]
+      );
+      this.displayProductDetails = true;
+    }
 
     this.database.getStoreById(this.id).subscribe((store) => {
       this.store.id = store.cod_cod_empreedimento;
@@ -106,7 +117,12 @@ export class StoreCatalogComponent implements OnInit {
     return groupedProducts;
   }
 
-  detalharProduto(id: number) {
-    console.log("Detalhar produto", id);
+  openProductDetails(produto: Product) {
+    this.productToShow = produto;
+    this.displayProductDetails = true;
+  }
+
+  onDialogVisibleChange(visible: boolean) {
+    this.displayProductDetails = visible;
   }
 }

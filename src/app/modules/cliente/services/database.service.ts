@@ -1,12 +1,29 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { catchError, map, Observable, of } from "rxjs";
+import { User } from "../models/user";
 
 @Injectable({
   providedIn: "root",
 })
 export class DatabaseService {
   endpoint = "http://localhost:8000/api";
+
+  users: User[] = [
+    {
+      id: 1,
+      name: 'João',
+      address: 'Rua 1',
+      complement: 'Casa 1'
+    },
+    {
+      id: 2,
+      name: 'Maria',
+      address: 'Rua 2',
+      complement: 'Casa 2'
+    }
+  ];
+  userAtual: User = this.users[0];
 
   constructor(private http: HttpClient) {}
 
