@@ -16,16 +16,16 @@ export class StoreCatalogComponent implements OnInit {
   id: number;
   store: Store = {
     id: 0,
-    name: '',
-    description: '',
+    name: "",
+    description: "",
     rating: 0,
-    pathImage: '',
+    pathImage: "",
     deliveryFee: 0,
   };
 
   products: Product[] = [];
   productsFiltered: Product[] = this.products;
-  
+
   categorias: any[] = [{ id: "0", name: "Tudo" }];
   idCategoriaSelecionada = "0";
 
@@ -38,11 +38,11 @@ export class StoreCatalogComponent implements OnInit {
     private route: ActivatedRoute,
     private database: DatabaseService
   ) {
-    this.id = this.route.snapshot.params["id"];
+    this.id = this.route.snapshot.params["catalogId"];
     console.log(this.id);
 
     let queryParams = this.route.snapshot.queryParams;
-    
+
     if (queryParams["product"]) {
       this.productToShow = this.products.find(
         (product) => product.id === queryParams["product"]
