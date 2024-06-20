@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Product } from '../../models/product';
 import { Store } from '../../models/store';
 
@@ -7,19 +7,20 @@ import { Store } from '../../models/store';
   templateUrl: './product-details.component.html',
   styleUrl: './product-details.component.css'
 })
-export class ProductDetailsComponent implements OnInit{
+export class ProductDetailsComponent{
 
   imgPath = '../../../../../assets/imgs/icon-image-not-found-free-vector.jpg';
   
   @Input() store: Store | undefined;
   @Input() product: Product | undefined;
-  @Input() visible = false;
+  @Input() visible = true;
+  @Output() visibleChange = new EventEmitter<boolean>();
   observacoes: string = '';
 
   constructor() { 
   }
 
-  ngOnInit() {
+  onDialogHide() {
+    this.visibleChange.emit(false);
   }
-
 }

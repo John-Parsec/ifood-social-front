@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from '../../models/product';
 import { Store } from '../../models/store';
@@ -112,12 +112,14 @@ export class StoreCatalogComponent {
     return groupedProducts;
   }
 
-  detalharProduto(produto: Product) {
+  openProductDetails(produto: Product) {
     this.productToShow = produto;
     this.displayProductDetails = true;
   }
 
-  onHideProductDetails() {
-    this.displayProductDetails = false;
+  onDialogVisibleChange(visible: boolean) {
+    this.displayProductDetails = visible;
   }
+
+  
 }

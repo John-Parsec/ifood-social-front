@@ -1,10 +1,11 @@
 <p-dialog 
     header="{{product?.name}}" 
-    [visible]="visible"
+    [(visible)]="visible"
     [modal]="true"
     [style]="{ width: '50rem' }" 
     [breakpoints]="{ '1199px': '75vw', '575px': '90vw' }"
-    [draggable]="false" >
+    [draggable]="false"
+    (onHide)="onDialogHide()">
     
     <div style="display: flex;">
         <img [src]="product?.image" [alt]="product?.name" style="max-width: 300px;" />
