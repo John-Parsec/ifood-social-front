@@ -1,1 +1,6 @@
-<p>footer works!</p>
+<p-dropdown 
+[options]="users" 
+[(ngModel)]="userSelected" 
+placeholder="Usuário"
+optionLabel="name"
+(onChange)="changeUser(userSelected)"/>
