@@ -1,62 +1,93 @@
-<p-table [value]="products" class="cart-container" [tableStyle]="{ 'min-width': '25rem' ,'max-width': '25rem' }">
-    <ng-template pTemplate="header">
-        <tr>
-            <td>
-                <p-avatar 
-                image="../../../../../assets/imgs/icon-image-not-found-free-vector.jpg"
-                styleClass="mr-2" 
-                size="xlarge" 
-                shape="circle" />
-            </td>
-            <td>
-                <span class="text-2xl font-semibold text-900">{{ store.name }}</span>
-            </td>
-        </tr>
-    </ng-template>
-    <ng-template let-product pTemplate="body">
-        <tr>
-            <td class="hover" (click)="detalharProduto(product)">
-                <p-avatar 
-                    image="{{ product.image }}" 
-                    styleClass="mr-2" 
-                    size="xlarge" 
-                    shape="circle" />
-            
-                <div class="flex-1 flex flex-column gap-2">
-                    <span class="font-bold">{{ product.name }}</span>
-                </div>
-            </td>
-            <td>
-                <div class="quantity">
-                    <p-button [raised]="true" [rounded]="true" [outlined]="true" size="small" icon="pi pi-minus" disabled="{{ product.quantity == 1 ? true : false }}" (click)="minusQtde(product)"
-                    severity="warning" />
-                    <p>{{ product.quantity }}</p>
-                    <p-button [raised]="true" [rounded]="true" [outlined]="true" size="small" icon="pi pi-plus" (click)="plusQtde(product)"
-                    severity="warning" />
-                </div>
-            </td>
-            <td>
-                <span class="font-bold text-900">
-                    {{ product.price * product.quantity | currency: "BRL" }}
-                </span>
-            </td>
-            <td>
-                <p-button [raised]="true" [rounded]="true" size="small" icon="pi pi-trash" (click)="removeItem(product)" severity="danger"/>
-            </td>
-        </tr>
-    </ng-template>
-    <ng-template pTemplate="footer">
-        <tr>
-            <td colspan="4">
-                <span>{{ store.deliveryFee ? 'Taxa de entrega: R$' + store.deliveryFee : 'Frete Grátis' }}</span>
-            </td>
-        <tr>
-            <td  colspan="2">
-                <h3>Total: {{ precoTotal() | currency: "BRL" }}</h3>
-            </td>
-            <td  colspan="2" class="text-right">
-                <p-button label="Finalizar Pedido" (click)="finalizarPedido()" severity="warning"/>
-            </td>
-        </tr>
-    </ng-template>
+<p-table
+  [value]="products"
+  class="cart-container z-5"
+  [tableStyle]="{ 'min-width': '25rem', 'max-width': '25rem' }">
+  <ng-template pTemplate="header">
+    <tr>
+      <td>
+        <p-avatar
+          image="../../../../../assets/imgs/logo_padrao_loja.png"
+          styleClass="mr-2"
+          size="xlarge"
+          shape="circle" />
+      </td>
+      <td>
+        <span class="text-2xl font-semibold text-900">{{ store.name }}</span>
+      </td>
+    </tr>
+  </ng-template>
+  <ng-template let-product pTemplate="body">
+    <tr>
+      <td class="hover" (click)="detalharProduto(product)">
+        <p-avatar
+          image="{{ product.image }}"
+          styleClass="mr-2"
+          size="xlarge"
+          shape="circle" />
+
+        <div class="flex-1 flex flex-column gap-2">
+          <span class="font-bold">{{ product.name }}</span>
+        </div>
+      </td>
+      <td>
+        <div class="quantity">
+          <p-button
+            [raised]="true"
+            [rounded]="true"
+            [outlined]="true"
+            size="small"
+            icon="pi pi-minus"
+            disabled="{{ product.quantity == 1 ? true : false }}"
+            (click)="minusQtde(product)"
+            severity="warning" />
+          <p>{{ product.quantity }}</p>
+          <p-button
+            [raised]="true"
+            [rounded]="true"
+            [outlined]="true"
+            size="small"
+            icon="pi pi-plus"
+            (click)="plusQtde(product)"
+            severity="warning" />
+        </div>
+      </td>
+      <td>
+        <span class="font-bold text-900">
+          {{ product.price * product.quantity | currency : "BRL" }}
+        </span>
+      </td>
+      <td>
+        <p-button
+          [raised]="true"
+          [rounded]="true"
+          size="small"
+          icon="pi pi-trash"
+          (click)="removeItem(product)"
+          severity="danger" />
+      </td>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="footer">
+    <tr>
+      <td colspan="4">
+        <span>{{
+          store.deliveryFee
+            ? "Taxa de entrega: R$" + store.deliveryFee
+            : "Frete Grátis"
+        }}</span>
+      </td>
+    </tr>
+
+    <tr>
+      <td colspan="2">
+        <h3>Total: {{ precoTotal() | currency : "BRL" }}</h3>
+      </td>
+      <td colspan="2" class="text-right">
+        <p-button
+          label="Finalizar Pedido"
+          (click)="finalizarPedido()"
+          severity="warning" />
+      </td>
+    </tr>
+  </ng-template>
 </p-table>

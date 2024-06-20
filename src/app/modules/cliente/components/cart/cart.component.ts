@@ -1,30 +1,36 @@
-import { Component } from '@angular/core';
-import { Product } from '../../models/product';
-import { Store } from '../../models/store';
-import { Router } from '@angular/router';
-import { SacolaService } from '../../services/sacola.service';
+import { Component } from "@angular/core";
+import { Product } from "../../models/product";
+import { Store } from "../../models/store";
+import { Router } from "@angular/router";
+import { SacolaService } from "../../services/sacola.service";
+import { Subscription } from "rxjs";
 
 @Component({
-  selector: 'app-cart',
-  templateUrl: './cart.component.html',
-  styleUrl: './cart.component.css'
+  selector: "app-cart",
+  templateUrl: "./cart.component.html",
+  styleUrl: "./cart.component.css",
 })
 export class CartComponent {
-  imgPath = '../../../../../assets/imgs/icon-image-not-found-free-vector.jpg';
+  imgPath = "../../../../../assets/imgs/icon-image-not-found-free-vector.jpg";
+  private produtosSubscription: Subscription;
 
   store: Store = {
-    id : 1,
-    name: 'Loja 1',
-    description: 'Descrição da loja 1',
+    id: 1,
+    name: "Loja 1",
+    description: "Descrição da loja 1",
     pathImage: this.imgPath,
     deliveryFee: 10,
     rating: 4,
   };
 
   products: Product[] = [];
-  
+
   constructor(private router: Router, private sacolaService: SacolaService) {
-    this.products = this.sacolaService.produtos;
+    this.produtosSubscription = this.sacolaService.produtos.subscribe(
+      (produtos) => {
+        this.products = produtos;
+      }
+    );
   }
 
   minusQtde(product: Product) {
@@ -40,22 +46,33 @@ export class CartComponent {
   }
 
   removeItem(product: Product) {
-    this.products = this.products.filter(p => p.id !== product.id);
+    this.sacolaService.remover(product);
   }
 
   precoTotal() {
     if (!this.products) {
       return 0;
     }
-    
-    return this.products.reduce((acc, product) => acc + product.price * (product.quantity ?? 0), 0) + this.store.deliveryFee;
+
+    return (
+      this.products.reduce(
+        (acc, product) => acc + product.price * (product.quantity ?? 0),
+        0
+      ) + this.store.deliveryFee
+    );
   }
 
   detalharProduto(product: Product) {
-    this.router.navigate(['catalogo/', this.store.id], { queryParams: { product: product.id }} );
+    this.router.navigate(["catalogo/", this.store.id], {
+      queryParams: { product: product.id },
+    });
   }
 
   finalizarPedido() {
-    alert('Pedido finalizado');
+    alert("Pedido finalizado");
+  }
+
+  ngOnDestroy() {
+    this.produtosSubscription.unsubscribe();
   }
 }

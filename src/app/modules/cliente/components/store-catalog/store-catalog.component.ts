@@ -39,7 +39,6 @@ export class StoreCatalogComponent implements OnInit {
     private database: DatabaseService
   ) {
     this.id = this.route.snapshot.params["catalogId"];
-    console.log(this.id);
 
     let queryParams = this.route.snapshot.queryParams;
 
@@ -77,7 +76,6 @@ export class StoreCatalogComponent implements OnInit {
           });
         });
       });
-      console.log(this.categorias);
     });
   }
 
