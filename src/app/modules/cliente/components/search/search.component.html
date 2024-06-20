@@ -24,7 +24,14 @@
                 src="../../../../../../assets/imgs/logo_padrao_loja.png"
                 [alt]="store.dcr_nome_fantasia" />
               <p-tag
-                [value]="'aberto'"
+                *ngIf="!store.oppenned"
+                [value]="'Fechado'"
+                [severity]="'secondary'"
+                class="absolute"
+                [ngStyle]="{ 'left.px': 5, 'top.px': 5 }" />
+              <p-tag
+                *ngIf="store.oppenned"
+                [value]="'Aberto'"
                 [severity]="'success'"
                 class="absolute"
                 [style.left.px]="4"

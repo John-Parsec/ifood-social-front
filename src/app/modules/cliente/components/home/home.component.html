@@ -17,7 +17,14 @@
             [alt]="store.name"
             class="w-full border-round" />
           <p-tag
-            [value]="'aberto'"
+            *ngIf="!store.oppenned"
+            [value]="'Fechado'"
+            [severity]="'secondary'"
+            class="absolute"
+            [ngStyle]="{ 'left.px': 5, 'top.px': 5 }" />
+          <p-tag
+            *ngIf="store.oppenned"
+            [value]="'Aberto'"
             [severity]="'success'"
             class="absolute"
             [ngStyle]="{ 'left.px': 5, 'top.px': 5 }" />

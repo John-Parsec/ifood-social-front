@@ -73,14 +73,47 @@ export class HomeComponent implements OnInit {
         (stores) => {
           let storeList: HomeStoreInterface[] = [];
           stores.forEach((store: any) => {
-            storeList.push({
+            const pushStore = {
               id: store.cod_empreedimento,
               name: store.dcr_nome_fantasia,
               pathImage: category.pathImage,
               rating: category.rating,
               distance: 1,
-              oppenned: true,
-            });
+              oppenned: false,
+            };
+
+            this.databaseService
+              .getAvaliability(store.cod_empreedimento)
+              .subscribe((data) => {
+                let dateNow = new Date();
+                let dayWeek = dateNow.getDay();
+                let hourNow = dateNow.getHours();
+                let minuteNow = dateNow.getMinutes();
+                data.forEach((diponibilidade: any) => {
+                  if (diponibilidade.num_dia_semana == dayWeek) {
+                    let start = new Date(diponibilidade.hora_inicio);
+                    let end = new Date(diponibilidade.hora_fim);
+                    let startHour = start.getUTCHours();
+                    let startMinute = start.getUTCMinutes();
+                    let endHour = end.getUTCHours();
+                    let endMinute = end.getUTCMinutes();
+                    if (hourNow >= startHour && hourNow <= endHour) {
+                      if (hourNow == startHour) {
+                        if (minuteNow >= startMinute) {
+                          pushStore.oppenned = true;
+                        }
+                      } else if (hourNow == endHour) {
+                        if (minuteNow <= endMinute) {
+                          pushStore.oppenned = true;
+                        }
+                      } else {
+                        pushStore.oppenned = true;
+                      }
+                    }
+                  }
+                });
+              });
+            storeList.push(pushStore);
           });
           this.highlightStores?.push({
             title: category.name,
