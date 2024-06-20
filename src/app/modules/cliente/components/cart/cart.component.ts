@@ -1,3 +1,4 @@
+import { DatabaseService } from "./../../services/database.service";
 import { Component } from "@angular/core";
 import { Product } from "../../models/product";
 import { Store } from "../../models/store";
@@ -25,7 +26,11 @@ export class CartComponent {
 
   products: Product[] = [];
 
-  constructor(private router: Router, private sacolaService: SacolaService) {
+  constructor(
+    private router: Router,
+    private sacolaService: SacolaService,
+    private databaseService: DatabaseService
+  ) {
     this.produtosSubscription = this.sacolaService.produtos.subscribe(
       (produtos) => {
         this.products = produtos;
@@ -69,7 +74,7 @@ export class CartComponent {
   }
 
   finalizarPedido() {
-    alert("Pedido finalizado");
+    this.databaseService.postPedido(this.precoTotal());
   }
 
   ngOnDestroy() {

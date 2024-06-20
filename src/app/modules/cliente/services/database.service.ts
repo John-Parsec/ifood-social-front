@@ -1,7 +1,8 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { catchError, map, Observable, of } from "rxjs";
+import { catchError, concatMap, map, Observable, of, timeout } from "rxjs";
 import { User } from "../models/user";
+import { SacolaService } from "./sacola.service";
 
 @Injectable({
   providedIn: "root",
@@ -10,7 +11,7 @@ export class DatabaseService {
   endpoint = "http://localhost:8000/api";
   userAtual: User = {} as User;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private sacola: SacolaService) {}
 
   getClients(): Observable<any> {
     return this.http.get<User[]>(`${this.endpoint}/clientes/`).pipe(
@@ -101,5 +102,44 @@ export class DatabaseService {
           return of([]);
         })
       );
+  }
+
+  postPedido(valorTotal: number): void {
+    // codigo randomico de 6 numeros
+    let randomCodPedido = Math.floor(100000 + Math.random() * 900000);
+    let pedido = {
+      cod_pedido: randomCodPedido,
+      tip_pedido: "P",
+      data_pedido: new Date(),
+      vlr_pedido: valorTotal,
+      cod_cliente: this.userAtual.id,
+      cod_forma_pagto: 1,
+      dcr_dados_pagto: "Dinheiro",
+    };
+
+    this.http
+      .post(`${this.endpoint}/pedidos/`, pedido)
+      .pipe(
+        concatMap(() => {
+          let produtos = this.sacola.produtos.value;
+          return of(...produtos).pipe(
+            concatMap((produto) => {
+              let itemPedido = {
+                cod_item_pedido: Math.floor(100 + Math.random() * 900),
+                vlr_produto: produto.price,
+                qtd_produto: produto.quantity,
+                vlr_total: produto.price * produto.quantity,
+                cod_pedido: randomCodPedido,
+                cod_produto: produto.id,
+              };
+              return this.http.post(
+                `${this.endpoint}/itens_pedido/`,
+                itemPedido
+              );
+            })
+          );
+        })
+      )
+      .subscribe();
   }
 }
