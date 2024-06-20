@@ -22,7 +22,7 @@
             
             <p>Preço: {{ product?.price | currency:'BRL' }}</p>
             
-            <p-button icon="pi pi-shopping-cart" class="flex-auto md:flex-initial white-space-nowrap" label="Add a Sacola" severity="warning"/>
+            <p-button icon="pi pi-shopping-cart" class="flex-auto md:flex-initial white-space-nowrap" label="Add a Sacola" severity="warning" (onClick)="addToSacola()"/>
         </div>
     </div>
 </p-dialog>

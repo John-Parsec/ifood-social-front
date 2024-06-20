@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Product } from '../../models/product';
 import { Store } from '../../models/store';
 import { Router } from '@angular/router';
+import { SacolaService } from '../../services/sacola.service';
 
 @Component({
   selector: 'app-cart',
@@ -53,7 +54,9 @@ export class CartComponent {
     }
   ];
   
-  constructor(private router: Router) { }
+  constructor(private router: Router, private sacolaService: SacolaService) { 
+    this.products = this.sacolaService.produtos;
+  }
 
   minusQtde(product: Product) {
     if (product.quantity && product.quantity > 0) {

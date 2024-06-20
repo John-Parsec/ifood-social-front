@@ -4,6 +4,7 @@ export interface Pedido{
     products: {
         productId: number;
         quantity: number;
+        observation: string;
     }[];
     deliveryFee: number;
     total: number;
