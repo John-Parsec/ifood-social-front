@@ -13,7 +13,7 @@ Siga as etapas abaixo para instalar as dependências do projeto:
 
 1. Clone o repositório para sua máquina local:
     ```
-    git clone https://github.com/seu-nome-de-usuario/ifood-social-front.git
+    git clone https://github.com/John-Parsec/ifood-social-front.git
     ```
 
 2. Navegue até o diretório do projeto:
